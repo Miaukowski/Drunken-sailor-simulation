@@ -1,0 +1,32 @@
+The program wants three arguments as command line inputs: 
+
+	1. The number of simulations/iterations you'd like to do.
+	2. Do you want to print trajectories (yes = 1, no = 0), so input either 0 or 1. 
+	3. Do you want to do a SAW or NON-SAW (yes = 1, no = 0), so input either 0 or 1.
+
+
+ALSO PLEASE DO NOT DELETE THE output.dat FILE! 
+The program simply overwrites over the old data for every "run". 
+(the current content on the output.dat file (as an example), comes from a run done with 100 iterations and SAW)
+
+
+If you'd like to plot the trajectories (Only recommended for 5 or less iterations, it gets messy quickly) do either one of the following: 
+
+Use the script i made:
+	-run the program
+	write the following into the command line:
+	-gnuplot
+	-load "print_trajectories.gp"
+	
+	
+manually plot: 
+	- run the program 
+	write the following into the command line:
+	- gnuplot
+	- set key off (the legend has a tendency to overlap with the plotted trajectories, remove this statement if you still like to have the legend in the plot)
+	- set xrange[:11] (the shore is at +x 10, so it's nice to see when they stop. 
+	- set xlabel "x-coordinates"
+	- set ylabel "y-coordinates"
+	- plot for [i=0:*] 'output.dat' i i u 1:2 w l lc i t sprintf('This is iteration %d', i)
+
+
